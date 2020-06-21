@@ -1,0 +1,47 @@
+.btb-react-popover {
+  position: relative;
+  display: flex;
+
+  &.popover-align-begin {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  &.popover-align-center {
+    align-items: center;
+    justify-content: center;
+  }
+  &.popover-align-end {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .popover_content {
+    display: none;
+    position: absolute;
+    max-width: 15rem;
+    background-color:white;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+
+    &.content-show {
+      display: block;
+    }
+
+    &.content-position-bottom {
+      top: 100%;
+      margin-top: 0.5rem;
+    }
+    &.content-position-top {
+      bottom: 100%;
+      margin-bottom: 0.5rem;
+    }
+    &.content-position-left {
+      right: 100%;
+      margin-right: 0.5rem;
+    }
+    &.content-position-right {
+      left: 100%;
+      margin-left: 0.5rem;
+    }
+  }
+}
