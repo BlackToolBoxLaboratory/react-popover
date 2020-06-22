@@ -2,17 +2,70 @@
   position: relative;
   display: flex;
 
+  &.popover-arrow {
+    .popover_content::before {
+      content: '';
+    } 
+  }
+  
   &.popover-align-begin {
     align-items: flex-start;
     justify-content: flex-start;
+    &.popover-arrow {
+      .content-position-bottom,
+      .content-position-top {
+        &::before {
+          left: 0.25rem;
+        }
+      }
+      .content-position-left,
+      .content-position-right {
+        &::before {
+          top: 0.25rem;
+        }
+      }
+    }
   }
   &.popover-align-center {
     align-items: center;
     justify-content: center;
+    &.popover-arrow {
+      .content-position-bottom,
+      .content-position-top {
+        &::before {
+          left: calc((100% - 1rem) / 2);
+        }
+      }
+      .content-position-left,
+      .content-position-right {
+        &::before {
+          top: calc((100% - 1rem) / 2);
+        }
+      }
+    }
   }
   &.popover-align-end {
     align-items: flex-end;
     justify-content: flex-end;
+    &.popover-arrow {
+      .content-position-bottom,
+      .content-position-top {
+        &::before {
+          right: 0.25rem;
+        }
+      }
+      .content-position-left,
+      .content-position-right {
+        &::before {
+          bottom: 0.25rem;
+        }
+      }
+    }
+  }
+
+  .popover_trigger {
+    cursor: pointer;
+    flex-grow: 1;
   }
 
   .popover_content {
@@ -22,26 +75,51 @@
     background-color:white;
     border-radius: 0.25rem;
     padding: 0.25rem;
+    font-size: 1rem;
 
     &.content-show {
       display: block;
     }
 
+    &::before {
+      position: absolute;
+      border-style: solid;
+    }
     &.content-position-bottom {
       top: 100%;
       margin-top: 0.5rem;
+      &::before {
+        top: -0.5rem;
+        border-color: #fff transparent;
+        border-width: 0 0.5rem 0.5rem;
+      }
     }
     &.content-position-top {
       bottom: 100%;
       margin-bottom: 0.5rem;
+      &::before {
+        bottom: -0.5rem;
+        border-color: #fff transparent;
+        border-width: 0.5rem 0.5rem 0;
+      }
     }
     &.content-position-left {
       right: 100%;
       margin-right: 0.5rem;
+      &::before {
+        right: -0.5rem;
+        border-color: transparent #fff;
+        border-width: 0.5rem 0 0.5rem  0.5rem;
+      }
     }
     &.content-position-right {
       left: 100%;
       margin-left: 0.5rem;
+      &::before {
+        left: -0.5rem;
+        border-color: transparent #fff;
+        border-width: 0.5rem 0.5rem 0.5rem 0;
+      }
     }
   }
 }
