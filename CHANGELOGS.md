@@ -1,3 +1,9 @@
+## v1.1.1
+
+> Jun, 22, 2020
+
+- **Major**: Add 'Emtpy' when nothing set in content.
+
 ## v1.1.0
 
 > Jun, 22, 2020

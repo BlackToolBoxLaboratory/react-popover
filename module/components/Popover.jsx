@@ -155,7 +155,7 @@ const Popover = React.forwardRef((props, ref) => {
         {(typeof props.trigger != 'undefined')? props.trigger : 'Trigger'}
       </div>
       <div ref={ref_content} className={classnames('popover_content', {'content-show' : env.state_showState.value}, `content-position-${computed_position}`)} style={getStyle(env.styleObj, ['popover_content', (env.state_showState.value)? 'content-show': '', `content-position-${computed_position}`])}>
-        {props.children}
+        {props.children || 'Empty'}
       </div>
     </div>
   );
