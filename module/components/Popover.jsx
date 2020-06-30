@@ -21,6 +21,7 @@ const Popover = React.forwardRef((props, ref) => {
   const ref_content = useRef(null);
   const computed_position = env.state_autoAdjust.value.position || env.showPosition;
   const computed_align = env.state_autoAdjust.value.align || env.showAlign;
+  const index = `${Date.now()}-${Math.ceil(Math.random()*1000)}`;
 
   useEffect(() => {
     _resize();
@@ -44,6 +45,16 @@ const Popover = React.forwardRef((props, ref) => {
       }
     }
   });
+  
+  useEffect(() => {
+    window.removeEventListener('click', _clickListener, false);
+    if (env.state_showState.value) {
+      window.addEventListener('click', _clickListener, false);
+    }
+    return function cleanup() {
+      window.removeEventListener('click', _clickListener, false);
+    };
+  }, [env.state_showState.value]);
 
   function _resize() {
     if (env.autoDetect) {
@@ -60,6 +71,20 @@ const Popover = React.forwardRef((props, ref) => {
         ...env.state_autoAdjust.value,
         ..._detectY()
       });
+    }
+  }
+
+  function _clickListener (event) {
+    window.test = event.path;
+    let result = event.path.find((node) => {
+      if (node.classList)
+      {
+        return node.classList.value.search(`popover-${index}`) > 0;
+      }
+      return false;
+    });
+    if (typeof result == 'undefined') {
+      _togglePopover();
     }
   }
 
@@ -150,7 +175,7 @@ const Popover = React.forwardRef((props, ref) => {
   }
 
   return (
-    <div ref={ref} className={classnames('btb-react-popover', props.className, `popover-align-${computed_align}`, {'popover-arrow' : env.withArrow})} style={getStyle(env.styleObj, ['btb-react-popover', `popover-align-${computed_align}`, (env.withArrow)? 'popover-arrow' : ''])}>
+    <div ref={ref} className={classnames('btb-react-popover', `popover-${index}`, props.className, `popover-align-${computed_align}`, {'popover-arrow' : env.withArrow})} style={getStyle(env.styleObj, ['btb-react-popover', `popover-align-${computed_align}`, (env.withArrow)? 'popover-arrow' : ''])}>
       <div ref={ref_trigger} className="popover_trigger" style={getStyle(env.styleObj, ['popover_trigger'])} onClick={_togglePopover}>
         {(typeof props.trigger != 'undefined')? props.trigger : 'Trigger'}
       </div>

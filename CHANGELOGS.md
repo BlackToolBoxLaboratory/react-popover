@@ -1,14 +1,20 @@
+## v1.2.0
+
+> Jun, 30, 2020
+
+- **Minor**: Add click listener.
+
 ## v1.1.1
 
 > Jun, 22, 2020
 
-- **Major**: Add 'Emtpy' when nothing set in content.
+- **Issue**: Add 'Emtpy' when nothing set in content.
 
 ## v1.1.0
 
 > Jun, 22, 2020
 
-- **Major**: Add auto edge detect.
+- **Minor**: Add auto edge detect.
 
 ## v1.0.0
 
