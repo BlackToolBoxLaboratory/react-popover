@@ -1,3 +1,9 @@
+## v1.2.1
+
+> Jul, 7, 2020
+
+- **Issue**: Remove unnecessary parameter of stateLock.
+
 ## v1.2.0
 
 > Jun, 30, 2020

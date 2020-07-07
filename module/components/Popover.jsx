@@ -89,10 +89,6 @@ const Popover = React.forwardRef((props, ref) => {
   }
 
   function _togglePopover () {
-    if (props.stateLock) {
-      return;
-    }
-
     if (typeof props.onToggle != 'undefined') {
       props.onToggle(!env.state_showState.value);
     }
