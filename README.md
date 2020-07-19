@@ -22,4 +22,4 @@ Please file [issue](https://github.com/BlackToolBoxLaboratory/react-popover/issu
 
 # Homepage
 
-You can see the document website [on-line](https://blacktoolboxlaboratory.github.io/react/v2/#/react-popover/basic).
+You can see the document website [on-line](https://blacktoolboxlaboratory.github.io/react/v2/#/packages/popover/basic).
