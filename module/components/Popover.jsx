@@ -47,12 +47,12 @@ const Popover = React.forwardRef((props, ref) => {
   });
   
   useEffect(() => {
-    window.removeEventListener('click', _clickListener, false);
+    window.removeEventListener('click', _clickListener);
     if (env.state_showState.value) {
-      window.addEventListener('click', _clickListener, false);
+      window.addEventListener('click', _clickListener);
     }
     return function cleanup() {
-      window.removeEventListener('click', _clickListener, false);
+      window.removeEventListener('click', _clickListener);
     };
   }, [env.state_showState.value]);
 
@@ -75,8 +75,7 @@ const Popover = React.forwardRef((props, ref) => {
   }
 
   function _clickListener (event) {
-    window.test = event.path;
-    let result = event.path.find((node) => {
+    let result = event.composedPath().find((node) => {
       if (node.classList)
       {
         return node.classList.value.search(`popover-${index}`) > 0;

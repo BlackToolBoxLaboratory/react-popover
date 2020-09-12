@@ -1,8 +1,15 @@
 {
   "name": "@blacktoolbox/react-popover",
   "packageName": "btblab-react-popover",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Popover maker based on React",
+  "keywords": [
+    "blacktoolbox",
+    "btblab",
+    "btb",
+    "react",
+    "popover"
+  ],
   "main": "lib/index.js",
   "module": "esm/index.js",
   "jsnext:main": "esm/index.js",

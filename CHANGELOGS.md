@@ -1,3 +1,9 @@
+## v1.2.2
+
+> Sep, 12, 2020
+
+- **Issue**: Fix bug of not closed while window clicked.
+
 ## v1.2.1
 
 > Jul, 7, 2020
