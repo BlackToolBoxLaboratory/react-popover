@@ -1,3 +1,9 @@
+## v1.2.3
+
+> Dec, 13, 2020
+
+- **Issue**: Fix bug of autoDetect.
+
 ## v1.2.2
 
 > Sep, 12, 2020

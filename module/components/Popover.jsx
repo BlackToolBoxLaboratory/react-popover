@@ -26,10 +26,10 @@ const Popover = React.forwardRef((props, ref) => {
   useEffect(() => {
     _resize();
     window.addEventListener('resize', _resize);
-    window.addEventListener('scroll', _scroll);
+    window.addEventListener('scroll', _resize);
     return function cleanup() {
       window.removeEventListener('resize', _resize);
-      window.removeEventListener('scroll', _scroll);
+      window.removeEventListener('scroll', _resize);
     };
   }, []);
 
@@ -61,14 +61,6 @@ const Popover = React.forwardRef((props, ref) => {
       env.state_autoAdjust.onAdjust({
         ...env.state_autoAdjust.value,
         ..._detectX(),
-        ..._detectY()
-      });
-    }
-  }
-  function _scroll() {
-    if (env.autoDetect) {
-      env.state_autoAdjust.onAdjust({
-        ...env.state_autoAdjust.value,
         ..._detectY()
       });
     }
