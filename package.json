@@ -1,7 +1,7 @@
 {
   "name": "@blacktoolbox/react-popover",
   "packageName": "btblab-react-popover",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Popover maker based on React",
   "keywords": [
     "blacktoolbox",
@@ -40,7 +40,7 @@
   },
   "homepage": "https://blacktoolboxlaboratory.github.io/react/v2/#/packages/popover",
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
