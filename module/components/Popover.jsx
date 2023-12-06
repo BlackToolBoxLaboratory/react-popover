@@ -9,6 +9,7 @@ const OFFSET_SCROLLBAR = 20;
 
 const Popover = React.forwardRef((props, ref) => {
   const env = {
+    state_index      : useIndexState(),
     state_showState  : useActiveState(props.showState),
     state_autoAdjust : useAdjustState({position : '', align : ''}),
     autoDetect       : (typeof props.autoDetect != 'undefined')? props.autoDetect : true,
@@ -21,9 +22,9 @@ const Popover = React.forwardRef((props, ref) => {
   const ref_content = useRef(null);
   const computed_position = env.state_autoAdjust.value.position || env.showPosition;
   const computed_align = env.state_autoAdjust.value.align || env.showAlign;
-  const index = `${Date.now()}-${Math.ceil(Math.random()*1000)}`;
 
   useEffect(() => {
+    env.state_index.onUpdate(`${Date.now()}-${Math.ceil(Math.random()*1000)}`);
     _resize();
     window.addEventListener('resize', _resize);
     window.addEventListener('scroll', _resize);
@@ -70,7 +71,7 @@ const Popover = React.forwardRef((props, ref) => {
     let result = event.composedPath().find((node) => {
       if (node.classList)
       {
-        return node.classList.value.search(`popover-${index}`) > 0;
+        return node.classList.value.search(`popover-${env.state_index.value}`) > 0;
       }
       return false;
     });
@@ -162,7 +163,7 @@ const Popover = React.forwardRef((props, ref) => {
   }
 
   return (
-    <div ref={ref} className={classnames('btb-react-popover', `popover-${index}`, props.className, `popover-align-${computed_align}`, {'popover-arrow' : env.withArrow})} style={getStyle(env.styleObj, ['btb-react-popover', `popover-align-${computed_align}`, (env.withArrow)? 'popover-arrow' : ''])}>
+    <div ref={ref} className={classnames('btb-react-popover', `popover-${env.state_index.value}`, props.className, `popover-align-${computed_align}`, {'popover-arrow' : env.withArrow})} style={getStyle(env.styleObj, ['btb-react-popover', `popover-align-${computed_align}`, (env.withArrow)? 'popover-arrow' : ''])}>
       <div ref={ref_trigger} className="popover_trigger" style={getStyle(env.styleObj, ['popover_trigger'])} onClick={_togglePopover}>
         {(typeof props.trigger != 'undefined')? props.trigger : 'Trigger'}
       </div>
@@ -172,6 +173,16 @@ const Popover = React.forwardRef((props, ref) => {
     </div>
   );
 });
+
+function useIndexState () {
+  const [value, setState] = useState();
+  return {
+    value,
+    onUpdate : (state) => {
+      setState(state);
+    }
+  };
+}
 
 function useActiveState(defaultSate) {
   const [value, setState] = useState(defaultSate);

@@ -1,3 +1,9 @@
+## v1.2.5
+
+> Dec, 6, 2023
+
+- **Issue**: Fix index for ssr.
+
 ## v1.2.4
 
 > Aug, 21, 2022
